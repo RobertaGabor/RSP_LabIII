@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./../JS/Persona.js"></script>
+    <script type="text/javascript" src="./../JS/Cliente.js"></script>
+    <script type="text/javascript" src="./../JS/Controller.js"></script>
+    <link rel="stylesheet" type="text/css" href="./../CSS/estilo.css"/>
+    <title>Document</title>
+</head>
+<body>        
+    <div id="espacioAlta">
+        <input type="button" value="Alta" id="altaV">
+        <input type="button" value="Eliminar" id="elimV">
+        <input type="button" value="Limpiar local STORAGE" id="limpV">
+    </div>
+    <div class="contain">
+        <div class="grilla" id="grilla" hidden>
+            <label for="id">ID: </label>
+            <input type="text" name="id" id="InId" readonly><br><br/>
+            <label for="nombre">Nombre: </label>
+            <input type="text" name="nombre" id="InNo"><br><br/>
+            <label for="appelido">Apellido: </label>
+            <input type="text" name="apellido" id="InAp"><br><br/>
+            <label for="Edad">Edad: </label>
+            <input type="text" name="edad" id="InEd"><br><br/>
+            <label for="Sexo">Sexo: </label>
+            <select name="tipos" id="InS">
+                <option value="F" id="sF">Femenino</option>
+                <option value="M" id="sM">Masculino</option>
+            </select><br><br/>
+            <input type="button" value="Cerrar" id="closed" style="margin-left: 5px;">
+            <input type="button" value="Agregar" id="Adding" style="margin-left: 5px;">
+        </div>
+    </div>
+
+    <div>
+        <H1>FILTROS</H1>
+    </div>
+    <div id="Filtracion">
+        <label for="filtrado" style="margin-left: 50px;">Filtrar por:</label> 
+        <select name="filtrado" id="filtros">
+            <option value="Todos">Todos</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Masculino">Masculino</option>
+        </select>
+        <label for="promedio" style="margin-left: 200px;">Promedio de edad:</label>
+        <input type="text" name="promedios" id="promedio" disabled="disabled">
+        <input type="button" value="Calcular promedio" id="calcP">
+    </div>
+    <div id="Mostrar">
+        <h2 style="display: inline-block;">Campos mostrados</h2> <h3 style="display:inline-block;">Tildar los campos a mostrar</h3><br><br/>
+        <label for="">ID</label>
+        <input type="checkbox" name="atributos" id="idV" value="Id" checked><label for="">Nombre</label><input type="checkbox" name="atributos" id="nombreV" value="Nombre" checked> 
+        <label for="">Edad</label><input type="checkbox" name="atributos" id="edadV" value="Edad" checked><label for="">Apellido</label><input type="checkbox" name="atributos" id="apellidoV" value="Apellido" checked> 
+    </div>
+    <div id="tTable">
+        <h1>LISTA DE PERSONAS</h1>
+        <table id="mitabla">
+            
+            <thead id="tcabeza">
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>EDAD</th>
+                <th>SEXO</th>
+            </thead>
+            <tbody  id="tcuerpo">
+                
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+<!-- HACER ELIMINAR
+SE QUE CIERRE AL AGREGAR
+QUE TRAIGA LOCAL STORAGE AL REFRESHAR-->

@@ -1,0 +1,57 @@
+input[type="button"]
+{
+    border: none;
+    background-color: aquamarine;
+    padding: 5px;
+    font-size: large;
+    padding-right: 9px;
+    padding-left: 9px;
+}
+
+body
+{
+    background-color: rgb(155, 155, 218);
+}
+h1
+{
+    justify-content: center;
+    text-align: center;
+    
+}
+
+#promedio
+{
+    width: 150px;
+    
+}
+.grilla
+{
+    background-color: rgb(179, 141, 59);
+    top: 135px;
+    position: absolute;
+    width: 95%;
+    padding: 20px;
+    border-radius: 5px;
+    
+    
+}
+.contain{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+}
+th,td
+{
+    border: 1px solid black;
+    padding: 4px;  
+}
+table
+{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+
+
