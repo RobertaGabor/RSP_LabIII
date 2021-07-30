@@ -170,7 +170,7 @@ class Controller implements EventListenerObject
 window.addEventListener("load",()=>
 {
     
-   Persona.cargarPagina();
+    //Persona.cargarPagina();
 
     let stage:EventListenerObject= new Controller();
     

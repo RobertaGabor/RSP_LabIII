@@ -57,16 +57,17 @@ class Persona
         {
             var lista:Array<Cliente>;
             lista=[]; //INICIALIZAR  
-            if(localStorage.length>0)
-            {
-                lista=JSON.parse(localStorage.getItem("Personas"));
-            } 
-            for(var i=0;i<lista.length;i++)
-            {
-    
-                Persona.Mostrar(lista[i].id,lista[i].nombre,lista[i].apellido,lista[i].edad,lista[i].sexo)
-            }        
+       
         }
+        if(localStorage.length>0)
+        {
+            lista=JSON.parse(localStorage.getItem("Personas"));
+        } 
+        for(var i=0;i<lista.length;i++)
+        {
+
+            Persona.Mostrar(lista[i].id,lista[i].nombre,lista[i].apellido,lista[i].edad,lista[i].sexo)
+        } 
 
     }
     public static limpiarTabla()

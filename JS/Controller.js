@@ -135,7 +135,7 @@ var Controller = /** @class */ (function () {
     return Controller;
 }());
 window.addEventListener("load", function () {
-    Persona.cargarPagina();
+    //Persona.cargarPagina();
     var stage = new Controller();
     var btnDel = document.getElementById("elimV");
     btnDel.addEventListener("click", stage);
