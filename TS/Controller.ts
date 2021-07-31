@@ -13,7 +13,24 @@ class Controller implements EventListenerObject
         var cuadro:HTMLElement=Controller.$("grilla");   
         var idNuevo:number;
         var sexS:string;
+                        //id
+        var idList=Persona.traerLista();
+        var ultimo:Cliente;
+        idNuevo=0;
+        if(idList.length>0)
+        {
+            ultimo=idList.reduce(function(a, b) {
+            if(a.id>=b.id) return a
+            else if (a.id<=b.id) return b
+            });
+            idNuevo=ultimo.id+1;
+        }
+        else
+        {
+            idNuevo=1;
+        }
 
+        id.value=idNuevo;
         switch(bton.id)
         {
             case "limpV":
@@ -21,24 +38,6 @@ class Controller implements EventListenerObject
                 break;
             case "altaV":
                 
-                //id
-                var idList=Persona.traerLista();
-                var ultimo:Cliente;
-                idNuevo=0;
-                if(idList.length>0)
-                {
-                    ultimo=idList.reduce(function(a, b) {
-                    if(a.id>=b.id) return a
-                    else if (a.id<=b.id) return b
-                    });
-                    idNuevo=ultimo.id+1;
-                }
-                else
-                {
-                    idNuevo=1;
-                }
-
-                id.value=idNuevo;
                 cuadro.hidden=false;
                 break;
             case "closed":

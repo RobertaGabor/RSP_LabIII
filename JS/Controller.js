@@ -12,28 +12,28 @@ var Controller = /** @class */ (function () {
         var cuadro = Controller.$("grilla");
         var idNuevo;
         var sexS;
+        //id
+        var idList = Persona.traerLista();
+        var ultimo;
+        idNuevo = 0;
+        if (idList.length > 0) {
+            ultimo = idList.reduce(function (a, b) {
+                if (a.id >= b.id)
+                    return a;
+                else if (a.id <= b.id)
+                    return b;
+            });
+            idNuevo = ultimo.id + 1;
+        }
+        else {
+            idNuevo = 1;
+        }
+        id.value = idNuevo;
         switch (bton.id) {
             case "limpV":
                 localStorage.clear();
                 break;
             case "altaV":
-                //id
-                var idList = Persona.traerLista();
-                var ultimo;
-                idNuevo = 0;
-                if (idList.length > 0) {
-                    ultimo = idList.reduce(function (a, b) {
-                        if (a.id >= b.id)
-                            return a;
-                        else if (a.id <= b.id)
-                            return b;
-                    });
-                    idNuevo = ultimo.id + 1;
-                }
-                else {
-                    idNuevo = 1;
-                }
-                id.value = idNuevo;
                 cuadro.hidden = false;
                 break;
             case "closed":

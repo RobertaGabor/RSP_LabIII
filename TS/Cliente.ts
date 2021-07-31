@@ -37,7 +37,7 @@ class Cliente extends Persona
     }
 
     public static AgregarCliente(sexo:string,nombre:HTMLInputElement,apellido:HTMLInputElement,id:number,edad:HTMLInputElement):void{
-        
+        alert(id)
         var car:Cliente= new Cliente(sexo,nombre.value,apellido.value,id,Number(edad.value));
         Cliente.cargarCliente(car);
         alert("Cliente agregado con exito!"); 
