@@ -12,6 +12,7 @@ class Controller implements EventListenerObject
         var sex:HTMLInputElement=Controller.$("InS");
         var cuadro:HTMLElement=Controller.$("grilla");   
         var idNuevo:number;
+        var sexS:string;
 
         switch(bton.id)
         {
@@ -36,19 +37,28 @@ class Controller implements EventListenerObject
                 {
                     idNuevo=1;
                 }
-                alert(idNuevo)
-                id.textContent=idNuevo;
+
+                id.value=idNuevo;
                 cuadro.hidden=false;
                 break;
             case "closed":
                 cuadro.hidden=true;
                 break;
             case "elimV":
+                var lista:Array<Cliente>=Persona.traerLista();
+                for(var i=0;i<lista.length;i++)
+                {
+                    sexS= sex.options[sex.selectedIndex].text;
+                    if(Number(id.value)==lista[i].id&&nom.value==lista[i].nombre&&ape.value==lista[i].apellido&&Number(eda.value)==lista[i].edad&&sexS==lista[i].sexo)
+                    {
+                        Persona.Eliminar(Number(id.value));
+                    }
+                }
                 break;
             case "Adding":
               
                 //agrego
-                var sexS:string= sex.options[tipo.selectedIndex].text;
+                sexS= sex.options[sex.selectedIndex].text;
                 Cliente.AgregarCliente(sexS,nom,ape,idNuevo,eda);
                 break;
             case "calcP":
@@ -106,11 +116,13 @@ class Controller implements EventListenerObject
                 break;
             case "filtros":
                 var filtrado=bton.options[bton.selectedIndex].text;
+                alert(filtrado)
                 if(filtrado=="Femenino")
                 {
                     var autos= Persona.traerLista();
                     Persona.limpiarTabla();
                     var autosfiltrados=autos.filter(autito => autito.sexo.match("Femenino"))
+                    console.log(autosfiltrados)
                     Persona.cargarPagina(autosfiltrados);
                     
                 }
@@ -118,7 +130,7 @@ class Controller implements EventListenerObject
                 {
                     var camion= Persona.traerLista();
                     Persona.limpiarTabla();
-                    var cmfiltrados=camion.filter(cm => cm.sexo.match("4x4"))
+                    var cmfiltrados=camion.filter(cm => cm.sexo.match("Masculino"))
                     Persona.cargarPagina(cmfiltrados);
                 }
                 else
@@ -169,8 +181,8 @@ class Controller implements EventListenerObject
 
 window.addEventListener("load",()=>
 {
-    
-    //Persona.cargarPagina();
+
+    Persona.cargarPagina();
 
     let stage:EventListenerObject= new Controller();
     

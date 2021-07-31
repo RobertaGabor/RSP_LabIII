@@ -40,8 +40,8 @@ var Cliente = /** @class */ (function (_super) {
         return JSON.parse(personaParse);
     };
     Cliente.AgregarCliente = function (sexo, nombre, apellido, id, edad) {
-        var car = new Auto(sexo, nombre.value, apellido.value, id, Number(edad.value));
-        Cliente.cargar(car);
+        var car = new Cliente(sexo, nombre.value, apellido.value, id, Number(edad.value));
+        Cliente.cargarCliente(car);
         alert("Cliente agregado con exito!");
     };
     Cliente.cargarCliente = function (ve) {

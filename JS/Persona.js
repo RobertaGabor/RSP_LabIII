@@ -63,5 +63,25 @@ var Persona = /** @class */ (function () {
         }
         return lista;
     };
+    Persona.Eliminar = function (id) {
+        var lista;
+        var idSelect;
+        //eliminarlo del localS
+        idSelect = id;
+        lista = Persona.traerLista();
+        lista = lista.filter(function (elemento) { return elemento.id != idSelect; });
+        localStorage.clear();
+        localStorage.setItem("Personas", JSON.stringify(lista));
+        for (var i = 0; i < lista.length; i++) {
+            Persona.Mostrar(lista[i].id, lista[i].nombre, lista[i].apellido, lista[i].edad, lista[i].sexo);
+        }
+        alert("Se ha eliminado con exito!");
+        //     var dni:string=((<HTMLElement>(<HTMLElement>(<HTMLElement>btn).parentElement).parentElement).querySelector(".PRIMARY"))?.innerHTML;
+        //     var btn=Manejador.$("InT");
+        //     var nombre=btn.options[btn.selectedIndex].text;
+        //     if(nombre=="Auto")
+        //     {
+        //     }
+    };
     return Persona;
 }());

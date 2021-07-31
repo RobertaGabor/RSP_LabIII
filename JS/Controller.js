@@ -11,6 +11,7 @@ var Controller = /** @class */ (function () {
         var sex = Controller.$("InS");
         var cuadro = Controller.$("grilla");
         var idNuevo;
+        var sexS;
         switch (bton.id) {
             case "limpV":
                 localStorage.clear();
@@ -32,18 +33,24 @@ var Controller = /** @class */ (function () {
                 else {
                     idNuevo = 1;
                 }
-                alert(idNuevo);
-                id.textContent = idNuevo;
+                id.value = idNuevo;
                 cuadro.hidden = false;
                 break;
             case "closed":
                 cuadro.hidden = true;
                 break;
             case "elimV":
+                var lista = Persona.traerLista();
+                for (var i = 0; i < lista.length; i++) {
+                    sexS = sex.options[sex.selectedIndex].text;
+                    if (Number(id.value) == lista[i].id && nom.value == lista[i].nombre && ape.value == lista[i].apellido && Number(eda.value) == lista[i].edad && sexS == lista[i].sexo) {
+                        Persona.Eliminar(Number(id.value));
+                    }
+                }
                 break;
             case "Adding":
                 //agrego
-                var sexS = sex.options[tipo.selectedIndex].text;
+                sexS = sex.options[sex.selectedIndex].text;
                 Cliente.AgregarCliente(sexS, nom, ape, idNuevo, eda);
                 break;
             case "calcP":
@@ -89,16 +96,18 @@ var Controller = /** @class */ (function () {
                 break;
             case "filtros":
                 var filtrado = bton.options[bton.selectedIndex].text;
+                alert(filtrado);
                 if (filtrado == "Femenino") {
                     var autos = Persona.traerLista();
                     Persona.limpiarTabla();
                     var autosfiltrados = autos.filter(function (autito) { return autito.sexo.match("Femenino"); });
+                    console.log(autosfiltrados);
                     Persona.cargarPagina(autosfiltrados);
                 }
                 else if (filtrado == "Masculino") {
                     var camion = Persona.traerLista();
                     Persona.limpiarTabla();
-                    var cmfiltrados = camion.filter(function (cm) { return cm.sexo.match("4x4"); });
+                    var cmfiltrados = camion.filter(function (cm) { return cm.sexo.match("Masculino"); });
                     Persona.cargarPagina(cmfiltrados);
                 }
                 else {
@@ -135,7 +144,7 @@ var Controller = /** @class */ (function () {
     return Controller;
 }());
 window.addEventListener("load", function () {
-    //Persona.cargarPagina();
+    Persona.cargarPagina();
     var stage = new Controller();
     var btnDel = document.getElementById("elimV");
     btnDel.addEventListener("click", stage);
